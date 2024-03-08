@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cool Webpage</title>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D64SRYK00C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D64SRYK00C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-D64SRYK00C');
-</script>
+      gtag('config', 'G-D64SRYK00C');
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -67,6 +67,27 @@
             bottom: 0;
             width: 100%;
         }
+
+        /* Styles for tabs */
+        .tab {
+            float: left;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            width: calc(33.33% - 2px); /* Adjust based on number of tabs */
+            text-align: center;
+            padding: 14px 16px;
+            margin-right: 2px;
+            cursor: pointer;
+        }
+
+        .tab:last-child {
+            margin-right: 0;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
@@ -74,12 +95,46 @@
         <h1>Welcome to Cool Webpage</h1>
     </header>
     <div class="container">
-        <p>This is a simple but cool webpage created using HTML and CSS.</p>
-        <p>Feel free to explore and customize it as you like!</p>
-        <a href="#" class="button">Click Me!</a>
+        <!-- Tabs -->
+        <div class="tab" onclick="openTab(event, 'Project1')">專案一</div>
+        <div class="tab" onclick="openTab(event, 'Project2')">專案二</div>
+        <div class="tab" onclick="openTab(event, 'Project3')">專案三</div>
+
+        <!-- Tab content -->
+        <div id="Project1" class="tabcontent">
+            <h2>專案一示意文字</h2>
+            <p>這裡是專案一的詳細內容。</p>
+        </div>
+
+        <div id="Project2" class="tabcontent">
+            <h2>專案二示意文字</h2>
+            <p>這裡是專案二的詳細內容。</p>
+        </div>
+
+        <div id="Project3" class="tabcontent">
+            <h2>專案三示意文字</h2>
+            <p>這裡是專案三的詳細內容。</p>
+        </div>
     </div>
     <footer>
         <p>&copy; 2024 Cool Webpage. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Function to open specific tab content
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
 </body>
 </html>
